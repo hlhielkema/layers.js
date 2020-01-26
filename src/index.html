@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layers Demo</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/styles.css" />    
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="half">
+            <h1>Layers.js</h1>
+            <p>This is a demo for a simple layers javascript library.</p> 
+            
+            <div class="step-buttons">
+                <div class="button active" data-state="a">
+                    Step A
+                </div>
+                <div class="button" data-state="b">
+                    Step B
+                </div>
+                <div class="button" data-state="c">
+                    Step C
+                </div>
+                <div class="button" data-state="d">
+                    Step D
+                </div>
+
+                <div class="button" data-state="e">
+                    Step E
+                </div>
+            </div>
+        </div>
+
+        <div class="half">
+            <div class="layers-container">
+                <img data-layer="d" src="img/layer_d.svg">
+                <img data-layer="c" src="img/layer_c.svg">
+                <img data-layer="b" src="img/layer_b.svg">
+                <img data-layer="a" src="img/layer_a.svg">                
+            </div>
+        </div>
+    </div>
+
+    <script src="js/layers.js"></script>              
+</body>
+</html>
