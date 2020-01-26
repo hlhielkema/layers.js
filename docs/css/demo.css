@@ -1,0 +1,58 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: #fffffe;
+}
+
+h1 {
+    color: #272343;
+    font-size: 58px;
+    font-weight: 700;
+    margin-top: 72px;
+    margin-bottom: 36px;
+}
+
+p {
+    color: #2d334a
+}
+
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+    padding: 32px;
+    margin: 0 auto;
+}
+
+.row {
+    float:left;
+    width: 100%;
+}
+
+.half {
+    float:left;
+    width: 50%;
+}
+
+.step-buttons {
+    margin-top: 32px;
+}
+
+.step-buttons > .button {
+    float: left;
+    width: 100%;
+    max-width: 100px;
+    line-height: 32px;
+    border: solid 2px #2b2c34;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    margin-right: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: background .5s;
+}
+
+.step-buttons > .button.active {
+    background: #2b2c34;
+    color: #fff;
+}
