@@ -1,0 +1,40 @@
+
+.layers-container {
+    position: relative;
+    float:left;
+    width: 450px;
+    height: 500px;
+}
+
+.layers-container > img {
+    position: absolute;   
+    left: 0;
+    width: 100%;
+    height: 100%;    
+}
+
+/* Animation: fade-in down */
+
+.layers-container.animate-fade-down > img {    
+    top: -16px;
+    opacity: 0;
+    transition: opacity .5s, top .5s;
+}
+
+.layers-container.animate-fade-down > img.visible {
+    top: 0;
+    opacity: 1;
+}
+
+/* Animation: fade-in right */
+
+.layers-container.animate-fade-right > img {
+    left: 16px;
+    opacity: 0;
+    transition: opacity .5s, left .5s;    
+}
+
+.layers-container.animate-fade-right > img.visible {
+    left: 0;
+    opacity: 1;
+}
