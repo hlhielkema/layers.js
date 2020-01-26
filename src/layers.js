@@ -1,4 +1,6 @@
-// Layers.js
+// layers.js
+// Author: Hielke Hielkema
+// Contact: hielkehielkema93@gmail.com
 
 // constructor: LayersJs
 function LayersJs(containerSelector) {
@@ -45,7 +47,7 @@ LayersJs.prototype.updateClass = function(element, className, enabled) {
 // Update the state groups
 LayersJs.prototype.updateStateGroups = function (stateGroups) {
     this.stateGroups = stateGroups;
-}
+};
 
 // Update the states of a state group
 LayersJs.prototype.applyStateGroup = function (stateGroupName) {
@@ -57,4 +59,4 @@ LayersJs.prototype.applyStateGroup = function (stateGroupName) {
 
     // Apply the states
     this.applyStates(states);
-}
+};
