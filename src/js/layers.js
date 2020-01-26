@@ -1,96 +1,60 @@
+// Layers.js
 
-var states = {
-    a: {
-        a: true,
-        b: true,
-        c: true,
-        d: true,
-    },
-    b: {
-        a: false,
-        b: true,
-        c: true,
-        d: true,
-    },
-    c: {
-        a: false,
-        b: false,
-        c: true,
-        d: true,
-    },
-    d: {
-        a: false,
-        b: false,
-        c: false,
-        d: true,
-    },
-    e: {
-        a: true,
-        b: false,
-        c: true,
-        d: true,
-    },
+// constructor: LayersJs
+function LayersJs(containerSelector) {
+    this.containerSelector = containerSelector;
+    this.stateGroups = null;
 }
 
-function bindButtons()
-{
-    var buttons = document.querySelectorAll('.step-buttons .button');
+// Apply the states to a set of layers
+LayersJs.prototype.applyStates = function(states) {
+    // Query the layers
+    // Layers can be <img> or <div.layer>
+    var layers = document.querySelectorAll(this.containerSelector + '> img, ' + this.containerSelector + '> .layer');
 
-    for (var i = 0; i < buttons.length; i++) {
-        let button = buttons[i];
-        
-        button.addEventListener('click', function() {
-
-            updateActiveButton(button);
-
-            var state = button.dataset.state;
-
-            applyStates(states[state]);
-        });
-    }
-}
-
-function updateActiveButton(button) {
-    var buttons = document.querySelectorAll('.step-buttons .button');
-    for (var i = 0; i < buttons.length; i++) {
-        if (buttons[i] == button) {
-            // Add the "active" class
-            if (!buttons[i].classList.contains('active')) {
-                buttons[i].classList.add('active')
-            }
-        }
-        else {
-            // Remove the "active" class
-            if (buttons[i].classList.contains('active')) {
-                buttons[i].classList.remove('active')
-            }
-        }
-    }
-}
-
-function applyStates(states) {
-    console.log('apply', states);
-
-    var layers = document.querySelectorAll('.layers-container img');
+    // Loop through the layers
     for (var i = 0; i < layers.length; i++) {
-        var layer = layers[i];
-        var layerId = layer.dataset.layer;
 
-        if (states[layerId] === true) {
-            // Add the "visible" class
-            if (!layer.classList.contains('visible')) {
-                layer.classList.add('visible')
-            }
-        }
-        else {
-            // Remove the "visible" class
-            if (layer.classList.contains('visible')) {
-                layer.classList.remove('visible')
-            }   
-        }
+        // Get the layer id from the "data-layer" attribute.
+        var layerId = layers[i].dataset.layer;
 
+        // Determine if the layer should be visible
+        var visible = states[layerId] === true;
+
+        // Update the visible state for the layer
+        this.updateClass(layers[i], 'visible', visible);
     }
+};
+
+// Update if a class is in the class list of an element.
+LayersJs.prototype.updateClass = function(element, className, enabled) {
+    if (enabled) {
+        // Add the class
+        if (!element.classList.contains(className)) {
+            element.classList.add(className)
+        }
+    }
+    else {
+        // Remove the class
+        if (element.classList.contains(className)) {
+            element.classList.remove(className)
+        }   
+    }
+};
+
+// Update the state groups
+LayersJs.prototype.updateStateGroups = function (stateGroups) {
+    this.stateGroups = stateGroups;
 }
 
-applyStates(states.a);
-bindButtons();
+// Update the states of a state group
+LayersJs.prototype.applyStateGroup = function (stateGroupName) {
+    // Retrieve the states for the state group name
+    var states = this.stateGroups[stateGroupName];
+    if (states === undefined) {
+        throw '[Layers.js] State group with name \"' + stateGroupName + '\" is not found.';
+    }        
+
+    // Apply the states
+    this.applyStates(states);
+}

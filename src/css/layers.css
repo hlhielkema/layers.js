@@ -1,0 +1,22 @@
+
+.layers-container {
+    position: relative;
+    float:left;
+    width: 450px;
+    height: 500px;
+}
+
+.layers-container img {
+    position: absolute;
+    top: -16px;
+    left: 0;
+    width: 450px;
+    height: 500px;
+    opacity: 0;
+    transition: opacity .5s, top .5s;
+}
+
+.layers-container img.visible {
+    top: 0;
+    opacity: 1;
+}
