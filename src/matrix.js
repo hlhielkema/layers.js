@@ -28,7 +28,7 @@ Matrix.prototype.print = function() {
             if (x !== 0) {
                 line += ' ';
             }
-            line += this.data[y][x];
+            line += this.data[y][x].toFixed(2);
         }    
         console.log(line);        
     }  
@@ -48,7 +48,7 @@ Matrix.prototype.toCssTransform = function() {
             if (x !== 0) {
                 str += ', '
             }            
-            str += this.data[y][x];                                      
+            str += new Number((this.data[y][x]).toFixed(6));
         }  
     }
     return str + ')';
@@ -79,8 +79,8 @@ Matrix.prototype.multiply = function(b) {
 Matrix.prototype.rotateX = function(r) {
     return this.multiply(new Matrix(4, 4, [
         [ 1, 0, 0, 0],
-        [ 0, Math.cos(r), Math.sin(r), 0],
-        [ 0, -Math.sin(r), Math.cos(r), 0], 
+        [ 0, Math.cos(r), -Math.sin(r), 0],
+        [ 0, Math.sin(r), Math.cos(r), 0], 
         [ 0, 0, 0, 1]
     ]));
 }
@@ -88,9 +88,9 @@ Matrix.prototype.rotateX = function(r) {
 // Rotate the matrix by r radians on the Y axis
 Matrix.prototype.rotateY = function(r) {
     return this.multiply(new Matrix(4, 4, [
-        [ Math.cos(r), 0, -Math.sin(r), 0],
+        [ Math.cos(r), 0, Math.sin(r), 0],
         [ 0, 1, 0, 0],
-        [ Math.sin(r), 0, Math.cos(r), 0], 
+        [ -Math.sin(r), 0, Math.cos(r), 0], 
         [0 , 0, 0, 1]
     ]));
 }
@@ -98,8 +98,8 @@ Matrix.prototype.rotateY = function(r) {
 // Rotate the matrix by r radians on the Z axis
 Matrix.prototype.rotateZ = function(r) {
     return this.multiply(new Matrix(4, 4, [
-        [ Math.cos(r), Math.sin(r), 0, 0], 
-        [ -Math.sin(r), Math.cos(r), 0, 0],
+        [ Math.cos(r), -Math.sin(r), 0, 0], 
+        [ Math.sin(r), Math.cos(r), 0, 0],
         [ 0, 0, 1, 0], 
         [ 0, 0, 0, 1]
     ]));
@@ -108,15 +108,23 @@ Matrix.prototype.rotateZ = function(r) {
 // Translate
 Matrix.prototype.translate3D = function(x, y, z) {
     return this.multiply(new Matrix(4, 4, [
-        [ 1, 0, 0, 0], 
-        [ 0, 1, 0, 0],
-        [ 0, 0, 1, 0], 
-        [ x, y, z, 1]
+        [ 1, 0, 0, x], 
+        [ 0, 1, 0, y],
+        [ 0, 0, 1, z], 
+        [ 0, 0, 0, 1]
     ]));
 }
 
-
-/*
+// Flip the matrix
+Matrix.prototype.flip = function() {
+    var result = new Matrix(this.rows, this.columns, null);    
+    for (var x = 0; x < this.columns; x++) {
+        for (var y = 0; y < this.rows; y++) {            
+            result.data[x][y] = this.data[y][x];
+        }    
+    }
+    return result;
+}
 
 
 var deg = function(d) {
@@ -124,18 +132,9 @@ var deg = function(d) {
 }
 
 var mx = new Matrix(4, 4, null); 
+mx = mx.rotateX(deg(54));
+mx = mx.rotateZ(deg(-45));
+mx = mx.translate3D(-170, 187, 0);
+mx = mx.flip();
 
-//mx = mx.rotateZ(Math.PI * 0.25);
-
-mx = mx.translate3D(100, 100, 0);
-
-console.log('--- mx ---');
-mx.print();
-
-
-console.log('--- CSS ---');
-console.log(mx.toCssTransform());
-
-document.querySelector('.shape').style.transform = mx.toCssTransform();
-
-*/
+document.querySelector('.generated-shape').style.transform = mx.toCssTransform();

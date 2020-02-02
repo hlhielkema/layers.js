@@ -16,12 +16,17 @@
 // Generated shapes (still in development)
 .layers-container > .layer > .generated-shape {
     background: red;
-    width: 200px;
-    height: 200px;
-    font-size: 100px;
+    width: 300px;
+    height: 300px;
+    font-size: 86px;
     text-align: center;
-    line-height: 200px;
+    line-height: 318px;
     transform-origin: top left;
+    transform: rotateX(54deg) rotate(-45deg) translate(-170px, 187px);
+
+    &:hover {
+        background: blue;        
+    }
 }
 
 // Animation: none
