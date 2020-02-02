@@ -1,24 +1,19 @@
 
-function bindButtons()
+function bindButtons(buttonQuery, callback)
 {
-    var buttons = document.querySelectorAll('.step-buttons .button');
-
+    var buttons = document.querySelectorAll(buttonQuery);
     for (var i = 0; i < buttons.length; i++) {
-        let button = buttons[i];
-        
+        let button = buttons[i];        
         button.addEventListener('click', function() {
-
-            updateActiveButton(button);
-
-            var stateGroupName = button.dataset.state;
-
-            layersJs.applyStateGroup(stateGroupName);
+            updateActiveButton(buttonQuery, button);
+            var value = button.dataset.value;
+            callback(value);            
         });
     }
 }
 
-function updateActiveButton(button) {
-    var buttons = document.querySelectorAll('.step-buttons .button');
+function updateActiveButton(buttonQuery, button) {
+    var buttons = document.querySelectorAll(buttonQuery);
     for (var i = 0; i < buttons.length; i++) {
         if (buttons[i] == button) {
             // Add the "active" class
@@ -69,6 +64,12 @@ layersJs.updateStateGroups({
     },
 });
 
-bindButtons();
+bindButtons('.option-buttons.visible-layers .button', function(stateGroupName) {
+    layersJs.applyStateGroup(stateGroupName);        
+});
+
+bindButtons('.option-buttons.animation-mode .button', function(animationMode) {
+    layersJs.updateAnimationMode(animationMode)
+});
 
 layersJs.applyStateGroup('a');

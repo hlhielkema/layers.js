@@ -4,6 +4,7 @@ body {
 }
 
 h1 {
+    float: left;
     color: #272343;
     font-size: 58px;
     font-weight: 700;
@@ -11,10 +12,20 @@ h1 {
     margin-bottom: 36px;
 }
 
-p {
-    color: #2d334a
+h2 {
+    float: left;
+    width: 100%;    
+    margin-top: 16px;
+    margin-bottom: 16px;
+    font-weight: 600;
 }
 
+p {
+    float: left;
+    width: 100%;    
+    color: #2d334a;
+    margin-bottom: 16px;
+}
 
 .container {
     width: 100%;
@@ -34,11 +45,11 @@ p {
     width: 50%;
 }
 
-.step-buttons {
+.option-buttons {
     margin-top: 32px;
 }
 
-.step-buttons > .button {
+.option-buttons > .button {
     float: left;
     width: 100%;
     max-width: 100px;
@@ -52,7 +63,7 @@ p {
     transition: background .5s;
 }
 
-.step-buttons > .button.active {
+.option-buttons > .button.active {
     background: #2b2c34;
     color: #fff;
 }

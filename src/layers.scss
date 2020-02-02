@@ -1,0 +1,98 @@
+// Basic layer container styles
+.layers-container {
+    position: relative;
+    float:left;
+    width: 450px;
+    height: 500px;
+
+    & > img, & > .layer {
+        position: absolute;   
+        left: 0;
+        width: 100%;
+        height: 100%;    
+    }
+}
+
+// Generated shapes (still in development)
+.layers-container > .layer > .generated-shape {
+    background: red;
+    width: 200px;
+    height: 200px;
+    font-size: 100px;
+    text-align: center;
+    line-height: 200px;
+    transform-origin: top left;
+}
+
+// Animation: none
+.layers-container.animate-none {
+    > img, > .layer {            
+        display: none;        
+        &.visible {            
+            display: block;        
+        }
+    }    
+}
+
+// Animation: fade
+.layers-container.animate-fade {
+    > img, > .layer {            
+        opacity: 0;
+        transition: opacity .5s;
+        &.visible {            
+            opacity: 1;
+        }
+    }    
+}
+
+// Animation: fade up
+.layers-container.animate-fade-up {
+    > img, > .layer {    
+        top: -16px;
+        opacity: 0;
+        transition: opacity .5s, top .5s;
+        &.visible {
+            top: 0;
+            opacity: 1;
+        }
+    }    
+}
+
+// Animation: fade right
+.layers-container.animate-fade-right {
+    > img, > .layer {    
+        left: 16px;
+        opacity: 0;
+        transition: opacity .5s, left .5s; 
+        &.visible {
+            left: 0;
+            opacity: 1;
+        }
+    }    
+}
+
+// Animation: fade down
+.layers-container.animate-fade-down {
+    > img, > .layer {    
+        top: 16px;
+        opacity: 0;
+        transition: opacity .5s, top .5s;
+        &.visible {
+            top: 0;
+            opacity: 1;
+        }
+    }    
+}
+
+// Animation: fade left
+.layers-container.animate-fade-left {
+    > img, > .layer {    
+        left: -16px;
+        opacity: 0;
+        transition: opacity .5s, left .5s; 
+        &.visible {
+            left: 0;
+            opacity: 1;
+        }
+    }    
+}

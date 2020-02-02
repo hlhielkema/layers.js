@@ -60,3 +60,40 @@ LayersJs.prototype.applyStateGroup = function (stateGroupName) {
     // Apply the states
     this.applyStates(states);
 };
+
+// Get the build-in animation modes
+LayersJs.prototype.getAnimationModes = function() {
+    return [
+        'fade-down',
+        'fade-right',
+        'fade-up',
+        'fade-left',
+        'fade',
+        'none'
+    ];
+};
+
+// Update the animation mode
+LayersJs.prototype.updateAnimationMode = function (animationMode) {
+    // Animation modes are set using a "animation-*"" class.
+    // This method will remove all old animation classes and add the new one.
+    // The name of the animation class will be the animation mode name with a "animation-" prefix.
+
+    // Get the class list of the layers container
+    var container = document.querySelector(this.containerSelector);
+    var classList = container.classList;
+
+    // Loop through the classes
+    for (var i = 0; i < classList.length; i++) {
+        var className = classList[i];
+
+        // Remove the class if it starts with 'animate-', which is the prefix for animation classes
+        if (className.indexOf('animate-') === 0) {
+            classList.remove(className);
+            i--;
+        }
+    }
+
+    // Add the new animation mode class
+    classList.add('animate-' + animationMode);
+};

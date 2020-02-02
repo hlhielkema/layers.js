@@ -1,40 +1,84 @@
-
 .layers-container {
-    position: relative;
-    float:left;
-    width: 450px;
-    height: 500px;
+  position: relative;
+  float: left;
+  width: 450px;
+  height: 500px;
 }
 
-.layers-container > img {
-    position: absolute;   
-    left: 0;
-    width: 100%;
-    height: 100%;    
+.layers-container > img, .layers-container > .layer {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-/* Animation: fade-in down */
-
-.layers-container.animate-fade-down > img {    
-    top: -16px;
-    opacity: 0;
-    transition: opacity .5s, top .5s;
+.layers-container > .layer > .generated-shape {
+  background: red;
+  width: 200px;
+  height: 200px;
+  font-size: 100px;
+  text-align: center;
+  line-height: 200px;
+  transform-origin: top left;
 }
 
-.layers-container.animate-fade-down > img.visible {
-    top: 0;
-    opacity: 1;
+.layers-container.animate-none > img, .layers-container.animate-none > .layer {
+  display: none;
 }
 
-/* Animation: fade-in right */
-
-.layers-container.animate-fade-right > img {
-    left: 16px;
-    opacity: 0;
-    transition: opacity .5s, left .5s;    
+.layers-container.animate-none > img.visible, .layers-container.animate-none > .layer.visible {
+  display: block;
 }
 
-.layers-container.animate-fade-right > img.visible {
-    left: 0;
-    opacity: 1;
+.layers-container.animate-fade > img, .layers-container.animate-fade > .layer {
+  opacity: 0;
+  transition: opacity .5s;
+}
+
+.layers-container.animate-fade > img.visible, .layers-container.animate-fade > .layer.visible {
+  opacity: 1;
+}
+
+.layers-container.animate-fade-up > img, .layers-container.animate-fade-up > .layer {
+  top: -16px;
+  opacity: 0;
+  transition: opacity .5s, top .5s;
+}
+
+.layers-container.animate-fade-up > img.visible, .layers-container.animate-fade-up > .layer.visible {
+  top: 0;
+  opacity: 1;
+}
+
+.layers-container.animate-fade-right > img, .layers-container.animate-fade-right > .layer {
+  left: 16px;
+  opacity: 0;
+  transition: opacity .5s, left .5s;
+}
+
+.layers-container.animate-fade-right > img.visible, .layers-container.animate-fade-right > .layer.visible {
+  left: 0;
+  opacity: 1;
+}
+
+.layers-container.animate-fade-down > img, .layers-container.animate-fade-down > .layer {
+  top: 16px;
+  opacity: 0;
+  transition: opacity .5s, top .5s;
+}
+
+.layers-container.animate-fade-down > img.visible, .layers-container.animate-fade-down > .layer.visible {
+  top: 0;
+  opacity: 1;
+}
+
+.layers-container.animate-fade-left > img, .layers-container.animate-fade-left > .layer {
+  left: -16px;
+  opacity: 0;
+  transition: opacity .5s, left .5s;
+}
+
+.layers-container.animate-fade-left > img.visible, .layers-container.animate-fade-left > .layer.visible {
+  left: 0;
+  opacity: 1;
 }

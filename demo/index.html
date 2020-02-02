@@ -19,36 +19,61 @@
             <h1>Layers.js</h1>
             <p>This is a demo for a simple layers javascript library.</p> 
             
-            <div class="step-buttons">
-                <div class="button active" data-state="a">
-                    Step A
+            <h2>Visible layers</h2>
+            <div class="option-buttons visible-layers">
+                <div class="button active" data-value="a">
+                    All
                 </div>
-                <div class="button" data-state="b">
-                    Step B
+                <div class="button" data-value="b">
+                    Bottom 3
                 </div>
-                <div class="button" data-state="c">
-                    Step C
+                <div class="button" data-value="c">
+                    Bottom 2
                 </div>
-                <div class="button" data-state="d">
-                    Step D
+                <div class="button" data-value="d">
+                    Bottom 1
                 </div>
-                <div class="button" data-state="e">
-                    Step E
+                <div class="button" data-value="e">
+                    1, 3, 4
+                </div>               
+            </div>
+            <h2>Animation mode</h2>
+            <div class="option-buttons animation-mode">
+                <div class="button active" data-value="fade-up">
+                    Fade up
                 </div>
+                <div class="button" data-value="fade-right">
+                    Fade right
+                </div>  
+                <div class="button" data-value="fade-down">
+                    Fade down
+                </div>
+                <div class="button" data-value="fade-left">
+                    Fade left
+                </div>                   
+                <div class="button" data-value="fade">
+                    Fade
+                </div>     
+                <div class="button" data-value="none">
+                    None
+                </div>     
             </div>
         </div>
 
         <div class="half">
-            <div class="layers-container animate-fade-down">
+            <div class="layers-container animate-fade-up">
                 <img data-layer="d" src="img/layer_d.svg">
                 <img data-layer="c" src="img/layer_c.svg">
                 <img data-layer="b" src="img/layer_b.svg">
-                <img data-layer="a" src="img/layer_a.svg">                
+                <img data-layer="a" src="img/layer_a.svg">     
+                <!--<div class="layer">
+                    <div class="shape">AB</div>
+                </div>   -->        
             </div>
         </div>
     </div>
-
-    <script src="../src/layers.js"></script>              
+    <script src="../src/matrix.js"></script>       
+    <script src="../src/layers.js"></script>                  
     <script src="js/demo.js"></script> 
 </body>
 </html>
