@@ -125,7 +125,7 @@ Matrix.prototype.flip = function() {
     }
     return result;
 }
-
+/*
 
 var deg = function(d) {
     return (2 * Math.PI) * (d / 360);
@@ -136,5 +136,6 @@ mx = mx.rotateX(deg(54));
 mx = mx.rotateZ(deg(-45));
 mx = mx.translate3D(-170, 187, 0);
 mx = mx.flip();
+*/
 
-document.querySelector('.generated-shape').style.transform = mx.toCssTransform();
+//document.querySelector('.generated-shape').style.transform = mx.toCssTransform();

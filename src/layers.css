@@ -13,18 +13,50 @@
 }
 
 .layers-container > .layer > .generated-shape {
-  background: red;
+  position: relative;
+  background: #2b2c34;
   width: 300px;
   height: 300px;
-  font-size: 86px;
+  font-size: 60px;
   text-align: center;
   line-height: 318px;
   transform-origin: top left;
   transform: rotateX(54deg) rotate(-45deg) translate(-170px, 187px);
 }
 
-.layers-container > .layer > .generated-shape:hover {
-  background: blue;
+.layers-container > .layer > .generated-shape.with-inner-shapes {
+  background: none;
+}
+
+.layers-container > .layer > .generated-shape.with-inner-shapes > .inner-shape {
+  float: left;
+  width: 100%;
+  height: calc(50% - 8px);
+  line-height: 164px;
+  margin-bottom: 16px;
+  background: #2b2c34;
+  position: relative;
+}
+
+.layers-container > .layer > .generated-shape .border.border-bottom {
+  width: 100%;
+  height: 10px;
+  background: #000;
+  bottom: -10px;
+  position: absolute;
+  transform: skewX(-45deg);
+  transform-origin: top left;
+}
+
+.layers-container > .layer > .generated-shape .border.border-left {
+  width: 10px;
+  height: 100%;
+  background: #000;
+  left: -10px;
+  top: 10px;
+  position: absolute;
+  transform: skewY(-45deg);
+  transform-origin: top left;
 }
 
 .layers-container.animate-none > img, .layers-container.animate-none > .layer {
