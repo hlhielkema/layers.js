@@ -72,4 +72,67 @@ bindButtons('.option-buttons.animation-mode .button', function(animationMode) {
     layersJs.updateAnimationMode(animationMode)
 });
 
+//layersJs.addImageLayer('d', 'img/layer_d.svg');
+//layersJs.addImageLayer('c', 'img/layer_c.svg');
+//layersJs.addImageLayer('b', 'img/layer_b.svg');
+//layersJs.addImageLayer('a', 'img/layer_a.svg');
+
+layersJs.addDivLayers('d', {
+    top: '192px',
+    shape: {
+        decorate: shape => shape.innerText = 'D',       
+    }
+});
+
+layersJs.addDivLayers('c', {
+    top: '128px',
+    shape: [
+        {
+            class: 'half',
+            decorate: shape => shape.innerText = 'C1', 
+            background: '#d2d1e9',
+            borderBackground: '#b2b1d8'
+        },
+        {
+            class: 'half',
+            decorate: shape => shape.innerText = 'C2',            
+            background: '#607D8B',
+            borderBackground: '#506975'
+        }
+    ]
+});
+
+layersJs.addDivLayers('b', {
+    top: '64px',
+    shape: {
+        decorate: shape => shape.innerText = 'B',
+        background: '#242f65',
+        borderBackground: '#17264e'
+    }
+});
+
+layersJs.addDivLayers('a', {    
+    shape: [
+        {
+            class: 'quarter',
+            decorate: shape => shape.innerText = 'A1', 
+            color: '#999',
+            background: '#2b2c34',
+            borderBackground: '#000' 
+        },
+        {
+            class: 'quarter',
+            decorate: shape => shape.innerHTML = '👽',            
+            background: '#009688',
+            borderBackground: '#035049' 
+        },
+        {
+            class: 'half',
+            decorate: shape => shape.innerText = 'Layers.js',            
+            background: '#009688',
+            borderBackground: '#035049' 
+        }
+    ]
+});
+
 layersJs.applyStateGroup('a');

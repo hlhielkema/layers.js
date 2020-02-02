@@ -13,48 +13,62 @@
     }
 }
 
-// Generated shapes (still in development)
-.layers-container > .layer > .generated-shape {
+// Generated shapes
+.layers-container > .layer > .generated-shape-container {
     position: relative;
-    background: #2b2c34;
     width: 300px;
-    height: 300px;
-    font-size: 60px;
-    text-align: center;
-    line-height: 318px;
+    height: 300px;    
     transform-origin: top left;
     transform: rotateX(54deg) rotate(-45deg) translate(-170px, 187px);  
 
-    &.with-inner-shapes {
-        background: none;
+    font-size: 60px;
+    line-height: 318px;
+    text-align: center;
+    margin: -8px;   
+    box-sizing: border-box;
+}
 
-        > .inner-shape {
-            float: left;
-            width: 100%;
-            height: calc(50% - 8px);
-            line-height: 164px;
-            margin-bottom: 16px;
-            background: #2b2c34;
-            position: relative;
-        }
-    }  
+.layers-container > .layer .generated-shape {    
+    float: left;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #2b2c34;
+    color: #000;
+    margin: 8px;   
 
-    .border {
+    &.half {
+        width: calc(100% - 16px);
+        height: calc(50% - 16px);
+
+        line-height: 138px;      
+        font-size: 46px;
+    }
+
+    &.quarter {
+        width: calc(50% - 16px);       
+        height: calc(50% - 16px);
+
+        line-height: 138px;
+        font-size: 46px;
+    }
+
+    > .border {
         &.border-bottom {
             width: 100%;
-            height: 10px;
+            height: 12px;
             background: #000;
-            bottom: -10px;
+            bottom: -12px;
             position: absolute;
             transform: skewX(-45deg);
             transform-origin: top left;
         }
         &.border-left {
-            width: 10px;
+            width: 12px;
             height: 100%;
             background: #000;
-            left: -10px;
-            top: 10px;
+            left: -12px;
+            top: 12px;
             position: absolute;
             transform: skewY(-45deg);
             transform-origin: top left;

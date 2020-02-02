@@ -97,3 +97,101 @@ LayersJs.prototype.updateAnimationMode = function (animationMode) {
     // Add the new animation mode class
     classList.add('animate-' + animationMode);
 };
+
+// Add an image layer
+LayersJs.prototype.addImageLayer = function(id, src) {
+    // Create the element    
+    var img = document.createElement('img');
+    img.dataset.layer = id;
+    img.src = src;
+
+    // Append the new element to the container
+    document.querySelector(this.containerSelector).appendChild(img);
+}
+
+// Add a div layer
+LayersJs.prototype.addDivLayers = function(id, options) {
+    // Create the element    
+    var layer = document.createElement('div');
+    layer.dataset.layer = id;
+    layer.classList.add('layer');
+    
+    if (typeof(options) === 'object' &&  options.shape !== undefined) {        
+        // Create the container for the shape
+        var shapeContainer = document.createElement('div');
+        shapeContainer.classList.add('generated-shape-container');
+
+        // Render the box shape and add it to the container
+        this.renderShape(options.shape, shapeContainer);
+
+        // Option: distance from top
+        if (options.top !== undefined && options.top !== null) {
+            shapeContainer.style.marginTop = options.top;
+        }
+
+        // Add the shape container to the layer element
+        layer.appendChild(shapeContainer);
+    }
+
+    // Append the new element to the container
+    document.querySelector(this.containerSelector).appendChild(layer);
+
+    // Return the div of the new layer.
+    return layer;
+}
+
+// Render the box shape for a layer
+LayersJs.prototype.renderShape = function(shapeOptions, containerElement) {    
+    if (Array.isArray(shapeOptions)) {
+        // Create multiple shapes if options is an array
+        for (var i = 0; i < shapeOptions.length; i++) {
+            this.renderShape(shapeOptions[i], containerElement);    
+        }
+    }
+    else {
+        // Create the element
+        var shape = document.createElement('div');
+        shape.classList.add('generated-shape');
+
+        // Option:  Allow adding a class from the options
+        if (typeof shapeOptions.class === 'string') {
+            shape.classList.add(shapeOptions.class);
+        }
+    
+        // Option: Allow changing the element from the options
+        if (typeof shapeOptions.decorate === 'function') {
+            shapeOptions.decorate(shape);
+        }        
+
+        // Option: background (color)
+        if (typeof shapeOptions.background === 'string') {
+            shape.style.background = shapeOptions.background;            
+        }
+
+        // Option: color
+        if (typeof shapeOptions.color === 'string') {
+            shape.style.color = shapeOptions.color;            
+        }
+
+        // Create the border elements
+        var borderBottom = document.createElement('div');
+        var borderLeft = document.createElement('div');    
+
+        // Add the classes for the border elements
+        borderBottom.classList.add('border', 'border-bottom');
+        borderLeft.classList.add('border', 'border-left');    
+
+        // Add the border elements
+        shape.appendChild(borderBottom);
+        shape.appendChild(borderLeft);
+
+        // Option: border background (color)
+        if (typeof shapeOptions.borderBackground === 'string') {
+            borderBottom.style.background = shapeOptions.borderBackground;            
+            borderLeft.style.background = shapeOptions.borderBackground;            
+        }
+
+        // Append the new shape to the container
+        containerElement.appendChild(shape);
+    }   
+}
