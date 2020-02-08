@@ -1,23 +1,25 @@
-# layers.js
+# Layers.js
 Layers.js
+
+![screenshot](screenshot.png)
 
 ## Demo
 [LIVE DEMO](https://hlhielkema.github.io/layers.js/)
 
 ## How to use
 
-### Initialize
+### Initialize Layers.js
 
 ``` js
 var layersJs = new LayersJs('.layers-container');
 ```
 
-### Add ``<img>`` layer
+### Add an ``<img>`` layer
 ``` js
 layersJs.addImageLayer('a', 'img/layer_a.svg');
 ```
 
-### Create simple `<div>` layer
+### Create a simple `<div>` layer
 
 ``` js
 layersJs.addDivLayers('b', {
@@ -30,7 +32,7 @@ layersJs.addDivLayers('b', {
 });
 ```
 
-### Create more advanced `<div>` layer
+### Create a more advanced `<div>` layer
 
 ``` js
 layersJs.addDivLayers('a', {    
@@ -95,18 +97,16 @@ layersJs.updateStateGroups({
 });
 ```
 
-### Switch to state group
+### Switch visible states
 
 ``` js
-layersJs.applyStateGroup(stateGroupName);   
+layersJs.applyStateGroup('c');   
 ```
-
-
 
 ### Set animation style
 
 ``` js
-layersJs.updateAnimationMode(animationMode);
+layersJs.updateAnimationMode('fade-right');
 ```
 
 **Available styles:**
