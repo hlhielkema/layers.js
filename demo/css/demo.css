@@ -59,11 +59,28 @@ p {
     margin-bottom: 16px;
     margin-right: 16px;
     text-align: center;
-    cursor: pointer;
-    transition: background .5s;
+    cursor: pointer;    
 }
 
 .option-buttons > .button.active {
     background: #2b2c34;
     color: #fff;
+}
+
+.view-on-github {
+    float: left;
+    height: 22px;
+    color:#2b2c34;
+}
+
+.view-on-github img {
+    float: left;
+    height: 22px;
+}
+
+.view-on-github div {
+    float: left;
+    height: 22px;
+    line-height: 22px;
+    padding-left: 8px;
 }

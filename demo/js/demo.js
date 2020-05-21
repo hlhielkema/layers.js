@@ -69,7 +69,7 @@ bindButtons('.option-buttons.visible-layers .button', function(stateGroupName) {
 });
 
 bindButtons('.option-buttons.animation-mode .button', function(animationMode) {
-    layersJs.updateAnimationMode(animationMode)
+    layersJs.updateAnimationMode(animationMode);
 });
 
 //layersJs.addImageLayer('d', 'img/layer_d.svg');
@@ -115,7 +115,7 @@ layersJs.addDivLayers('a', {
     shape: [
         {
             class: 'quarter',
-            decorate: shape => shape.innerText = 'A1', 
+            decorate: shape => shape.innerText = 'A', 
             color: '#999',
             background: '#2b2c34',
             borderBackground: '#000' 

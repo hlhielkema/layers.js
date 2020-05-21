@@ -122,7 +122,7 @@ layersJs.updateStateGroups({
 });
 ```
 
-Which to a state group using the `layersJs.applyStateGroup([stateGroupName])` function:
+Switch to a state group using the `layersJs.applyStateGroup([stateGroupName])` function:
 
 ``` js
 layersJs.applyStateGroup('c');   
@@ -130,7 +130,7 @@ layersJs.applyStateGroup('c');
 
 ### Animation style
 
-Layer.js supports multiple animation styles. Use the `layersJs.updateAnimationMode([animationMode])` to switch between styles from code. You can also prefix the style name with `animation-` and add it as a class on the later container `<div>`.
+Layer.js supports multiple build-in animation styles. Use the `layersJs.updateAnimationMode([animationMode])` to switch between styles from code. You can also prefix the style name with `animation-` and add it as a class on the later container `<div>`.
 
 ``` js
 layersJs.updateAnimationMode('fade-right');
