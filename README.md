@@ -1,5 +1,5 @@
 # Layers.js
-Layers.js
+Create animated 3D layers with different content, styles and colors. It’s perfect for explaining the (architecture) layers of a large application or system on your website.
 
 ![screenshot](screenshot.png)
 
